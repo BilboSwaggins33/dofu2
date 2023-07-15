@@ -1,6 +1,6 @@
 package com.dofu2.config.service;
 
-import com.dofu2.config.util.StringUtil;
+import com.dofu2.config.util.StringUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -30,7 +30,7 @@ public abstract class AbstractTableService<T, ID extends Serializable> {
                 json = new ObjectMapper().writeValueAsString(object);
             } catch (JsonProcessingException jsonProcessingException) {
             }
-            String error = StringUtil.getExceptionAsString(e);
+            String error = StringUtils.getExceptionAsString(e);
             String message = "Error saving " + object.getClass().getName();
             if (error.contains("Unknown column ")) {
                 String field = error.substring(error.indexOf("Unknown column ") + "Unknown column '".length());

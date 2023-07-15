@@ -3,6 +3,7 @@ package com.dofu2.master.model;
 import com.dofu2.config.util.Constants;
 import com.dofu2.config.util.JsonDateDeserializer;
 import com.dofu2.config.util.JsonDateSerializer;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -11,6 +12,7 @@ import lombok.Setter;
 
 import jakarta.persistence.*;
 
+import java.math.BigInteger;
 import java.sql.Date;
 
 
@@ -21,8 +23,12 @@ import java.sql.Date;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
     private long id;
+
+    @ManyToOne
+    @JsonBackReference
+    @JoinColumn
+    private User user;
 
     @Column(name = "name")
     private String name;
@@ -44,6 +50,7 @@ public class Task {
 
     @Column(name="complete")
     private Boolean complete;
+
 
 
 }

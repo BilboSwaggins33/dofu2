@@ -6,7 +6,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.security.GeneralSecurityException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +39,7 @@ public abstract class AbstractController<T, ID extends Serializable> {
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> save(@RequestBody T object, HttpServletRequest request) {
+    public ResponseEntity<?> save(@RequestBody T object, HttpServletRequest request) throws GeneralSecurityException, IOException {
         T result = service.save(object);
         return ResponseEntity.ok(result);
     }

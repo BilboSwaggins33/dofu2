@@ -10,6 +10,9 @@ public final class AuthoritiesConstants {
     public static final String X_TENANT_ID = "X-Tenant-Id";
     public static final String BRANCH_ID = "Branch-Id";
 
+    public static final String AUTHORIZATION = "Authorization";
+
+
 //    public static final String ADMIN = "ROLE_ADMIN";
 //
 //    public static final String USER = "ROLE_USER";
